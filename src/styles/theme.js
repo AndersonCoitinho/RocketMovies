@@ -6,5 +6,6 @@ export default {
       BASE: "#CAC4CF",
       WHITE: "#F4EDE8",
       PINK: "#FF859B",
+      GRAY_TEXT: "#999591"
     }
   }
