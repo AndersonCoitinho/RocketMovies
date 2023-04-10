@@ -2,6 +2,7 @@ import { Container, Profile, Search } from './style';
 import { FiSearch } from 'react-icons/fi';
 import { Input } from '../../components/Input'
 
+
 export function Header() {
     return (
         <Container>
@@ -11,7 +12,7 @@ export function Header() {
                 <Input placeholder="Pesquisar pelo titulo" icon={FiSearch}/>
             </Search>
 
-            <Profile>
+            <Profile to="/profile">
                 <div>
                     <strong>Anderson Coitinho</strong>
                     <span>sair</span>
@@ -21,6 +22,8 @@ export function Header() {
                     alt="Foto do Usuario"
                 />
             </Profile>
+
+            
         </Container>
     )
 }

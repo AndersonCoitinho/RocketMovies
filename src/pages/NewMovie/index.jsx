@@ -7,6 +7,8 @@ import { Button } from '../../components/Button'
 
 import { Container, Form } from './style'
 
+import { Link } from 'react-router-dom'
+
 export function NewMovie() {
     return (
         <Container>
@@ -17,7 +19,10 @@ export function NewMovie() {
                     <header>
                         <h1>Novo Filme</h1>
                         
-                            Voltar
+                            <Link to="/">
+                                Voltar
+                            </Link>
+                            
                         
                     </header>
 

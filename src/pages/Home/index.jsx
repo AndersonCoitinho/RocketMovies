@@ -3,6 +3,9 @@ import { Header } from '../../components/Header';
 import { Button } from '../../components/Button'
 import { Section } from '../../components/Section'
 import { Note } from '../../components/Note'
+import { FiPlus } from 'react-icons/fi';
+
+import { Link } from 'react-router-dom'
 
 export function Home() {
     return (
@@ -12,7 +15,9 @@ export function Home() {
             <main>
                 <Form>
                     <header>
+                        <Link to="/newMovie">
                         <Button title="Adicionar filme" />
+                        </Link>
                     </header>
                 </Form>
 
