@@ -2,10 +2,16 @@ import { Container, Profile, Search } from './style';
 import { FiSearch } from 'react-icons/fi';
 import { Input } from '../../components/Input'
 import { useAuth } from '../../hooks/auth'
+import { api } from '../../services/api'
+import avatarPlaceholder from '../../assets/cinema.png'
+
 
 
 export function Header() {
-    const { signOut } = useAuth();
+    
+    const { signOut, user } = useAuth();
+    const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
+
     return (
         <Container>
             <h1>RocketMovies</h1>
@@ -16,11 +22,11 @@ export function Header() {
 
             <Profile to="/profile">
                 <div>
-                    <strong>Anderson Coitinho</strong>
+                <strong>{user.name}</strong>
                     <span onClick={signOut}>sair</span>
                 </div>
                 <img
-                    src="https://github.com/andersoncoitinho.png"
+                    src={avatarUrl}
                     alt="Foto do Usuario"
                 />
             </Profile>
