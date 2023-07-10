@@ -4,21 +4,22 @@ import { Input } from '../../components/Input'
 import { useAuth } from '../../hooks/auth'
 import { api } from '../../services/api'
 import avatarPlaceholder from '../../assets/cinema.png'
+import { useState, useEffect } from "react";
 
 
-
-export function Header() {
+export function Header({ children }) {
     
     const { signOut, user } = useAuth();
+
     const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
+
+
 
     return (
         <Container>
             <h1>RocketMovies</h1>
 
-            <Search>
-                <Input placeholder="Pesquisar pelo titulo" icon={FiSearch} />
-            </Search>
+            <Search>{children}</Search>
 
             <Profile to="/profile">
                 <div>

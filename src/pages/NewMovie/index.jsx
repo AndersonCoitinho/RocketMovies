@@ -7,6 +7,8 @@ import { Button } from '../../components/Button'
 import { useState } from 'react'
 import { Container, Form } from './style'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+
 
 import { api } from '../../services/api'
 
@@ -15,30 +17,52 @@ export function NewMovie() {
     const [rating, setRating] = useState("");
     const [description, setDescription] = useState("")
 
-    const [links, setLinks] = useState([]);
-    const [newLink, setNewLink] = useState("")
+    const [tags, setTags] = useState([]);
+    const [newTag, setNewTag] = useState("")
+
+    const navigate = useNavigate()
+
+    function handleAddTag() {
+        setTags(prevState => [...prevState, newTag])
+        setNewTag("")
+    }
+
+    function handleRemoveTag(deleted) {
+        setTags((prevState) => prevState.filter((tag) => tag !== deleted));
+    }
+
 
     async function handleNewNote() {
+        if (!title) {
+            return alert("Digite o título do filme");
+        }
+
+        if (!rating) {
+            return alert("Digite a nota do filme");
+        }
+
+        const isRatingValid = rating >= 0 && rating <= 5;
+
+        if (!isRatingValid) {
+            return alert("A nota do filme deve ser entre 0 e 5");
+        }
+
+        if (newTag) {
+            return alert(
+                "Você deixou uma tag no campo para adicionar, mas não clicou em adicionar. Clique para adicionar ou deixe o campo vazio."
+            )
+        }
+
         await api.post("/notes", {
             title,
             description,
             rating,
-            links
+            tags
         });
 
         alert("Filme cadastrado com sucesso!")
+        navigate("/")
     }
-
-
-    function handleAdLink() {
-        setLinks(prevState => [...prevState, newLink])/*vai manter os anteriores com o novo link*/
-        setNewLink("")
-    }
-
-    function handleRemoveLink(deleted) {
-        setLinks(prevState => prevState.filter(link => link !== deleted))
-    }
-
 
     return (
         <Container>
@@ -70,23 +94,26 @@ export function NewMovie() {
                     />
 
                     <Section title="Marcadores">
-                        {
-                            links.map((link, index) => (
-                                <NoteItem
-                                    key={String(index)}
-                                    value={link}
-                                    onClick={() => handleRemoveLink(link)}
-                                />
-                            ))
-                        }
-                        <NoteItem
-                            isNew
-                            placeholder="Novo marcador"
-                            value={newLink}
-                            onChange={e => setNewLink(e.target.value)}
-                            onClick={handleAdLink}
-                        />
+                        <div className='tags'>
+                            {
+                                tags.map((tag, index) => (
+                                    <NoteItem
+                                        key={String(index)}
+                                        value={tag}
+                                        onClick={() => handleRemoveTag(tag)}
+                                    />
+                                ))
+                            }
+                            <NoteItem
+                                isNew
+                                placeholder="Novo tag"
+                                onChange={e => setNewTag(e.target.value)}
+                                value={newTag}
+                                onClick={handleAddTag}
+                            />
+                        </div>
                     </Section>
+
 
                     <Button title="Salvar" onClick={handleNewNote} />
                 </Form>
