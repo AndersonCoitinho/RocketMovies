@@ -1,12 +1,9 @@
 import { Container, Form, Content } from "./style";
 import { Header } from '../../components/Header';
 import { Button } from '../../components/Button'
-import { Section } from '../../components/Section'
 import { Note } from '../../components/Note'
-import { FiPlus } from 'react-icons/fi';
 import { Input } from "../../components/Input";
 import { useState, useEffect } from "react";
-import { Movie } from "../../components/Movie";
 import { api } from '../../services/api'
 import { useNavigate } from 'react-router-dom';
 
@@ -52,7 +49,7 @@ export function Home() {
 
                 <Content>
                     {
-                        movies.map(movie => (
+                        movies.map((movie) => (
                             <Note
                                 key={String(movie.id)}
                                 data={movie}
