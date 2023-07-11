@@ -1,50 +1,77 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.header`
-    height: 105px;
-    width: 100%;
+  grid-area: header;
 
-    > h1 {
-        color: ${({ theme }) => theme.COLORS.PINK};
-        padding: 42px 0 0 0;
-        font-size: 24px;
-    }
+  height: 11.6rem;
+  width: 100%;
 
-    display: flex;
-    justify-content: space-between;
-    padding: 0 123px 0 123px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
+
+  display: flex;
+  justify-content: space-between;
+
+  padding: 0 12.3rem;
+
+  position: relative;
 `;
 
-export const Profile = styled.div`
-    display: flex;
-    align-items: center;
+export const Brand = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    > img {
-        width: 64px;
-        height: 64px;
-        border-radius: 50%
-    }
-
-    > div {
-        display: flex;
-        flex-direction: column;
-        margin-right: 9px;
-        line-height: 24px;
-
-        span {
-            font-size: 14px;
-            text-align: right;
-            color: ${({ theme }) => theme.COLORS.BACKGROUND_500};
-        }
-
-        strong {
-            font-size: 18px;
-            color: ${({ theme }) => theme.COLORS.WHITE};
-        }
-    }
+  > h1 {
+    font-size: 2.4rem;
+    color: ${({ theme }) => theme.COLORS.PINK};
+  }
 `;
 
 export const Search = styled.div`
-    grid-area: search;
-    padding: 30px 0 30px 0;
+  display: flex;
+  align-items: center;
+  padding: 0 6.4rem;
+  flex-grow: 1;
+`;
+
+export const Profile = styled(Link)`
+  display: flex;
+  align-items: center;
+
+  > img {
+    width: 6.4rem;
+    height: 6.4rem;
+    border-radius: 50%;
+  }
+
+  > div {
+    margin-right: 0.9rem;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+
+    height: 4rem;
+
+    strong {
+      color: ${({ theme }) => theme.COLORS.WHITE};
+    }
+  }
+`;
+
+export const Logout = styled.button`
+  border: none;
+  background: none;
+
+  color: ${({ theme }) => theme.COLORS.GRAY_200};
+
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+
+  position: absolute;
+  bottom: 3.8rem;
+  right: 19.6rem;
+
+}
 `;

@@ -22,6 +22,10 @@ export function NewMovie() {
 
     const navigate = useNavigate()
 
+    function handleBack() {
+        navigate(-1);
+    }
+
     function handleAddTag() {
         setTags(prevState => [...prevState, newTag])
         setNewTag("")
@@ -73,7 +77,7 @@ export function NewMovie() {
                     <header>
                         <h1>Novo Filme</h1>
 
-                        <Link to="/">
+                        <Link onClick={handleBack}>
                             Voltar
                         </Link>
 

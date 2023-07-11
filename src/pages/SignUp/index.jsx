@@ -5,6 +5,7 @@ import { Button } from '../../components/Button'
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi'
 import { useState } from "react"
 import { api } from "../../services/api"
+import { Link } from "react-router-dom";
 
 export function SignUp() {
     const [name, setName] = useState("")
@@ -62,9 +63,7 @@ export function SignUp() {
 
                 <Button title="Cadastrar" onClick={handleSignUp} />
 
-                <a href=''>
-                    Voltar para o login
-                </a>
+                <Link to="/">Voltar para o login</Link>
             </Form>
 
             <Background />
