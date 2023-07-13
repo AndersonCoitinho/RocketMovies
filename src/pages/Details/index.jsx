@@ -50,7 +50,6 @@ export function Details() {
       <Header />
       {
         data &&
-
         <main>
           <Content>
             <ButtonText onClick={handleBack}>

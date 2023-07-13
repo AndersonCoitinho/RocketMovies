@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const Container = styled.button`
     width: 100%;
-    height: 222px;
+    height: 225px;
     background: rgba(255, 133, 155, 0.05);
     border: none;
     border-radius: 16px;
@@ -30,6 +30,11 @@ export const Container = styled.button`
         font-size: 16px;
         line-height: 19px;
         color: ${({ theme }) => theme.COLORS.GRAY_TEXT};
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2; 
+        -webkit-box-orient: vertical;
     }
 
 
@@ -39,3 +44,4 @@ export const Container = styled.button`
         margin-top: 24px;
     }
 `;
+

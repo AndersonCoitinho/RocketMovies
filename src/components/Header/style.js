@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 export const Container = styled.header`
   grid-area: header;
-
   height: 11.6rem;
   width: 100%;
 
@@ -64,7 +63,7 @@ export const Logout = styled.button`
   border: none;
   background: none;
 
-  color: ${({ theme }) => theme.COLORS.GRAY_200};
+  color: red;
 
   font-size: 1.4rem;
   line-height: 1.8rem;
@@ -73,5 +72,4 @@ export const Logout = styled.button`
   bottom: 3.8rem;
   right: 19.6rem;
 
-}
 `;

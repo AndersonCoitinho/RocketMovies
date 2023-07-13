@@ -3,7 +3,7 @@ import { useAuth } from '../../hooks/auth'
 import { api } from '../../services/api'
 import avatarPlaceholder from '../../assets/cinema.png'
 import { useNavigate } from "react-router-dom";
-
+import { ButtonText } from '../ButtonText'
 
 
 export function Header({ children }) {
@@ -18,11 +18,17 @@ export function Header({ children }) {
         signOut();
     }
 
+    function handleBack() {
+        navigation("/");
+    }
+
 
     return (
         <Container>
             <Brand>
-                <h1>RocketMovies</h1>
+                <ButtonText onClick={handleBack}>
+                    <h1>RocketMovies</h1>
+                </ButtonText>
             </Brand>
 
             <Search>{children}</Search>
@@ -35,7 +41,7 @@ export function Header({ children }) {
                 <img src={avatarURL} alt={user.name} />
             </Profile>
 
-            <Logout onClick={handleSignOut}>sair</Logout>
+            <Logout onClick={handleSignOut}>Sair</Logout>
         </Container>
     )
 }

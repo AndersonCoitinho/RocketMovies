@@ -4,15 +4,16 @@ export const Container = styled.div`
     width: 100%;
     height: 100vh;
     display: grid;
-    grid-template-rows: 105px auto;
+    grid-template-rows: 11.6rem auto;
     grid-template-areas:
     "header"
-    "content";
+    "content"
+;
 
     > main {
         grid-area: content;
         overflow-y: scroll;
-        padding: 64px 0;
+        padding: 2rem 0;
     }
 `;
 
@@ -24,7 +25,7 @@ export const Links = styled.ul`
     }
 
     a {
-        color: ${({ theme }) => theme.COLORS.WHITE };
+        color: ${({ theme }) => theme.COLORS.WHITE};
     }
 
 `;
@@ -42,13 +43,15 @@ export const Content = styled.div`
     > h1 {
         font-size: 36px;
         font-weight: 500;
-        padding-top: 64px
+        padding-top: 64px;
+        padding-bottom: 1rem;        
     }
 
     > p {
         font-size: 16px;
         margin-top: 16px;
         text-align: justify;
+        margin-bottom: 1rem;
     }
 
     > div img {
@@ -56,9 +59,15 @@ export const Content = styled.div`
         height: 24px;
         border-radius: 35px;
         border: 1px solid #3E3B47;
+
     }
 
     > div {
         display: flex;
+        gap: .5rem;
+    }
+
+    > section{
+        padding: 1rem 1rem .5rem 0;
     }
 `;

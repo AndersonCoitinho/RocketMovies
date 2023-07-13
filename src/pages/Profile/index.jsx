@@ -1,12 +1,13 @@
 import { Container, Form, Avatar } from './style'
-import { Link } from 'react-router-dom'
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
+import { ButtonText } from '../../components/ButtonText'
 import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from 'react-icons/fi'
 import { useState } from 'react'
 import { useAuth } from '../../hooks/auth'
 import avatarPlaceholder from '../../assets/cinema.png'
 import { api } from '../../services/api'
+import { useNavigate } from "react-router-dom";
 
 
 export function Profile() {
@@ -15,10 +16,15 @@ export function Profile() {
     const [email, setEmail] = useState(user.email);
     const [passwordOld, setPasswordOld] = useState();
     const [passwordNew, setPasswordNew] = useState();
+    const navigate = useNavigate();
 
     const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder /*se nao tiver avatar vai para o avatarpadrao*/
     const [avatar, setAvatar] = useState(avatarUrl)
     const [avatarFile, setAvatarFile] = useState(null)
+
+    function handleBack() {
+        navigate(-1);
+    }
 
 
     async function handleUpdate() {
@@ -44,9 +50,10 @@ export function Profile() {
     return (
         <Container>
             <header>
-                <Link to="/">
-                    <p><FiArrowLeft /> Voltar</p>
-                </Link>
+                <ButtonText onClick={handleBack}>
+                    <FiArrowLeft />
+                    Voltar
+                </ButtonText>
             </header>
 
             <Form>

@@ -6,7 +6,6 @@ import { Input } from "../../components/Input";
 import { useState, useEffect } from "react";
 import { api } from '../../services/api'
 import { useNavigate } from 'react-router-dom';
-
 import { Link } from 'react-router-dom'
 
 export function Home() {

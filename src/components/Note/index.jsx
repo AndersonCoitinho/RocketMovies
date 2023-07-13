@@ -1,16 +1,22 @@
 import { Container } from './style';
 import { Tag } from '../Tag'
+import { Rating } from '../Rating';
 
 export function Note({ data, ...rest }) {
     return (
         <Container {...rest}>
             <h1>{data.title}</h1>
-            <p>{data.description}</p>
+
+            <Rating rating={data.rating} />
+
+            <p>
+                {data.description}
+            </p>
             {
                 data.tags &&
                 <footer>
                     {
-                        data.tags.map(tag => <Tag key={tag.name} title={tag.name}/>)
+                        data.tags.map(tag => <Tag key={tag.id} title={tag.name} />)
                     }
                 </footer>
             }
